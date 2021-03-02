@@ -46,7 +46,10 @@ public abstract class Location implements Comparable<Location>
 
     @Override
     public int compareTo(Location other) {
-        return this.name.compareTo(other.name);
+        if(name!=null)
+            return this.name.compareTo(other.name);
+        else
+            return -1;
         //not safe, check if name is null before
     }
 }
