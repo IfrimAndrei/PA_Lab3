@@ -35,7 +35,6 @@ public abstract class Location implements Comparable<Location>
         cost.put(node, value);
     }
 
-
     @Override
     public String toString( ) {
         return "Location{" +
