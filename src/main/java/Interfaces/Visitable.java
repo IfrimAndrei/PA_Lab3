@@ -17,12 +17,12 @@ public interface Visitable {
         return (Duration.between(obj.getClosingTime(),obj.getOpeningTime()));
     }
 
-    default LocalTime DefaultOT()
+    default LocalTime defaultOT()
     {
         return ( LocalTime.of(9, 30));
     }
 
-    default LocalTime DefaultCT()
+    default LocalTime defaultCT()
     {
         return ( LocalTime.of(20, 00));
     }

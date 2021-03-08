@@ -10,6 +10,8 @@ public class Church extends Location implements Visitable {
 //--------------------Constructors
     public Church()  {
         super();
+        openingTime=defaultOT();
+        closingTime=defaultCT();
     }
     public Church(String name, Map<Location, Integer> cost, LocalTime openingTime, LocalTime closingTime) {
         super( name, cost );

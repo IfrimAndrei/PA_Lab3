@@ -14,6 +14,8 @@ public class Restaurant extends Location implements Payable, Classifiable, Visit
     //--------------------Constructors
     public Restaurant( ) {
         super();
+        openingTime=defaultOT();
+        closingTime=defaultCT();
     }
     public Restaurant(String name, Map<Location, Integer> cost, double ticketPrice, String rank, LocalTime openingTime, LocalTime closingTime) {
         super( name, cost );

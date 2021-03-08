@@ -12,6 +12,8 @@ public class Museum extends Location implements Visitable, Payable {
 //--------------------Constructors
     public Museum( ) {
         super();
+        openingTime=defaultOT();
+        closingTime=defaultCT();
     }
     public Museum(String name, Map<Location, Integer> cost, LocalTime openingTime, LocalTime closingTime, double ticketPrice) {
         super( name, cost );
