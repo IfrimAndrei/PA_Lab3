@@ -1,23 +1,21 @@
 import Abstract.Location;
-import Interfaces.Payable;
-import Interfaces.Visitable;
 import Locations.Church;
 import Locations.Hotel;
 import Locations.Museum;
 import Locations.Restaurant;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class TravelPlan {
     public static void execute() {
         City myCity = new City();
         boolean[][] pref=new boolean[6][6];//daca pref[v1][v2]=true <=> v1->v2 este una din preferinte
-
         int numberOfLocations=6;
+
         initCity( myCity,pref);
         shortestPath( myCity,pref,numberOfLocations);
     }
+
     public static void initCity(City myCity,boolean[][] pref)
     {
 
@@ -50,9 +48,10 @@ public class TravelPlan {
         myCity.addLocation( v6 );
 
     }
-    public static void shortestPath(City myCity,boolean[][] pref,int numberOfLocations) {
-        int[][] costPath = new int[numberOfLocations][numberOfLocations];
-        String[][] namePath = new String[numberOfLocations][numberOfLocations];
+
+    public static void shortestPath(City myCity,boolean[][] pref,int numberOfLocations){  // Se pun valorile in matricea costPath si se foloseste Algoritmul lui Dijkstra pe ea,
+        int[][] costPath = new int[numberOfLocations][numberOfLocations];                 // cand modificam valorile din matrice, facem schimbari si in matricea de string-uri namePath
+        String[][] namePath = new String[numberOfLocations][numberOfLocations];           // pentru a retine 'nodurile' care constinuie drumul minim
         final int INFINITY = 100_000_000;
 
         for ( Location i : myCity.getNodes() ) {

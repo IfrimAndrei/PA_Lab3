@@ -3,12 +3,11 @@ import Locations.Church;
 import Locations.Hotel;
 import Locations.Museum;
 import Locations.Restaurant;
-
 import java.time.LocalTime;
 
 
 public class Main {
-    public static void main(String arggs[]) {
+    public static void main(String[] arggs) {
         TravelPlan myPlan= new TravelPlan();
         TravelPlan.execute();
 /*
