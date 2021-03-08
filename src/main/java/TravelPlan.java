@@ -9,14 +9,14 @@ import java.util.Scanner;
 public class TravelPlan {
     public static void execute() {
         City myCity = new City();
-        boolean[][] pref=new boolean[6][6];//daca pref[v1][v2]=true <=> v1->v2 este una din preferinte
+        int[][] pref=new int[6][6];//daca pref[v1][v2]=true <=> v1->v2 este una din preferinte
         int numberOfLocations=6;
 
         initCity( myCity,pref);
         shortestPath( myCity,pref,numberOfLocations);
     }
 
-    public static void initCity(City myCity,boolean[][] pref)
+    public static void initCity(City myCity,int[][] pref)
     {
 
         Hotel v1 =new Hotel();
@@ -49,7 +49,7 @@ public class TravelPlan {
 
     }
 
-    public static void shortestPath(City myCity,boolean[][] pref,int numberOfLocations){  // Se pun valorile in matricea costPath si se foloseste Algoritmul lui Dijkstra pe ea,
+    public static void shortestPath(City myCity,int[][] pref,int numberOfLocations){  // Se pun valorile in matricea costPath si se foloseste Algoritmul lui Dijkstra pe ea,
         int[][] costPath = new int[numberOfLocations][numberOfLocations];                 // cand modificam valorile din matrice, facem schimbari si in matricea de string-uri namePath
         String[][] namePath = new String[numberOfLocations][numberOfLocations];           // pentru a retine 'nodurile' care constinuie drumul minim
         final int INFINITY = 100_000_000;
@@ -82,7 +82,12 @@ public class TravelPlan {
                         if ( costPath[i][j] > costPath[i][k] + costPath[k][j] ) {
                             costPath[i][j] = costPath[i][k] + costPath[k][j];
                             namePath[i][j] = namePath[i][k] + "\n" + namePath[k][j];
-
+                            pref[i][j] = pref[i][k] + pref[k][j];
+                        }
+                        else if ( ( costPath[i][j] == costPath[i][k] + costPath[k][j] ) && pref[i][j]<(pref[i][k]+pref[k][j])) {
+                            costPath[i][j] = costPath[i][k] + costPath[k][j];
+                            namePath[i][j] = namePath[i][k] + "\n" + namePath[k][j];
+                            pref[i][j] = pref[i][k] + pref[k][j];
                         }
 
         Scanner myObj = new Scanner(System.in);

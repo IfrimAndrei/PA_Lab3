@@ -7,6 +7,7 @@ import java.util.Map;
 public class Hotel extends Location implements  Payable, Classifiable {
     private double ticketPrice;
     private String rank;
+
 //--------------------Constructors
     public Hotel( ) {
         super();
